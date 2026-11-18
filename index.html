@@ -4,10 +4,35 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mario-garcía-oliva-proyectofinal</title>
+    <title>Titangym</title>
   </head>
   <body>
-    <div id="app"></div>
+
+    <header class="hero" id="inicio">
+      <div class="hero__bar">
+        <a class="logo" href="#inicio" aria-label="Titangym, ir al inicio">
+          <span class="logo__text">TITANGYM</span>
+          <svg class="logo__icon" aria-hidden="true"><use href="#icon-fitness" /></svg>
+        </a>
+        <a class="btn-login" href="#">Iniciar sesión</a>
+      </div>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="nav__link" href="#inicio">Inicio</a>
+        <a class="nav__link" href="#planes">Planes</a>
+        <a class="nav__link" href="#horarios">Horarios</a>
+        <a class="nav__link" href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="hero__content">
+        <h1 class="hero__title">ENTRENA FUERTE <br />RECUPERA MEJOR</h1>
+        <p class="hero__text">
+          Espacios amplios, rutinas guiadas y apoyo continuo para que avances con consistencia y
+          sin perder motivación.
+        </p>
+      </div>
+    </header>
+    
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
