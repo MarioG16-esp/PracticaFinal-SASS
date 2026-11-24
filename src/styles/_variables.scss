@@ -1,64 +1,158 @@
 
-/* color */
-$blanco: #ffffff;
-$horario: #ed2196;
-$negro: #000000;
-$recuadros: #f7f8fa;
-$trazos-y-letra-pequeña: #969ba4;
-$verde-lima: #2cec22;
-$verde-oscuro: #4c9848;
 
-/* iconos */
-$iconos-pequeños: 1.5rem;
+// Colores (Paleta del Figma)
+$color-primary: #2cec22; // Verde Lima: acentos, botones, iconos
+$color-secondary: #4c9848; // Verde Oscuro: fondo del logo
+$color-accent: #ed2196; // Horario: cajas de horas
+$color-text: #000;
+$color-muted: #969ba4; // Trazos y letra pequeña
+$color-border: $color-muted;
+$color-surface: #f7f8fa; // Recuadros: fondo de tarjetas
+$color-dark: #000; // Cabecera y footer
+$color-light: #fff;
+$color-gradient-end: #434344; // Final del degradado de la cabecera
+$color-page-dark: #111317; // Fondo de la página de inicio de sesión
 
-/* Fonts */
-$font-size-letra-footer: 0.625rem;
-$font-size-letra-recuadros: 1rem;
-$font-size-letra-pequeña: 1.25rem;
-$font-size-titulos-pequeños: 1.75rem;
-$font-size-titulos: 3rem;
-$font-size-logo: 4rem;
-$font-weight-regular: 25rem;
-$font-weight-media: 31.25rem;
-$font-weight-negrita: 43.75rem;
+// Capas oscuras sobre la imagen de la cabecera del login (Figma: 2 degradados)
+$overlay-side-start: rgba(#070809, 0.72);
+$overlay-side-mid: rgba(#070809, 0.15);
+$overlay-side-end: rgba(#070809, 0.69);
+$overlay-side-mid-stop: 55%;
+$overlay-top: rgba(#000, 0.05);
+$overlay-bottom: rgba(#050506, 0.86);
 
-/* Tipografías */
+// Tipografía
 $font-title: "Titan One", sans-serif; // Títulos y apartados
 $font-text: "Oswald", sans-serif; // Textos
 $font-small: "Inter", sans-serif; // Letra pequeña
 $font-button: "Fugaz One", sans-serif; // Botón
+$font-signup: "Saira Condensed", sans-serif; // Botón "Crear"
+$font-base: $font-text;
 
-/*  Pesos */ 
 $fw-regular: 400;
 $fw-medium: 500;
+$fw-semibold: 600;
 $fw-bold: 700;
 
-$fs-h1: 28; // Título del hero (móvil)
-$fs-title-sm: 28; // Títulos de sección y tarjetas (Titulos pequeños)
-$fs-lead: 20; // Subtítulo de sección
-$fs-body: 16; // Texto general / LetraRecuadros
-$fs-small: 14; // Viñetas, botones de plan, copyright
-$fs-day: 20; // Días del horario
-$fs-slot: 16; // Etiqueta de clase del horario
-$fs-logo: 30.72; // Logo cabecera (móvil)
-$fs-logo-footer: 32;
-$fs-price: 40;
-$fs-nav: 16;
-$fs-login: 15;
+$font-size-legal: 0.625rem; // 10px
+$font-size-label: 0.8125rem; // 13px
+$font-size-small: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-login: 0.9375rem; // 15px (botón y texto de los campos)
+$font-size-lead: 1.25rem; // 20px
+$font-size-title: 1.75rem; // 28px
+$font-size-logo: 1.92rem; // 30.72px
+$font-size-logo-footer: 2rem; // 32px
+$font-size-price: 2.5rem; // 40px
+$font-size-display: 3rem; // 48px (título del login)
 
-/* Espaciados  */ 
-$space-page-x: 24; // Margen lateral de la página en móvil
-$space-section-top: 40;
-$space-section-gap: 24;
+// Alturas de línea
+$line-height-base: 1.5rem; // 24px
+$line-height-hero-text: 1.5625rem; // 25px
+$line-height-lead: 1.75rem; // 28px
+$line-height-card-title: 2rem; // 32px
+$line-height-title: 2.25rem; // 36px
+$line-height-hero-title: 2.375rem; // 38px
+$line-height-slot-label: 1.375rem; // 22px
+$line-height-login: 1.34375rem; // 21.5px
 
-/* Radios */    
-$radius-card: 24;
-$radius-icon: 16;
-$radius-button: 10;
-$radius-pill: 999;
-$radius-slot: 8;
+$line-height-slogan: 0.96; // Lema del login
+$line-height-display: 0.98; // Título del login
+$line-height-intro: 1.5; // Descripción del login
 
-/* Bordes */ 
-$border-muted: 1px solid $color-muted;
+$letter-spacing-label: 0.075rem; // 1.2px
+$letter-spacing-tight: -0.02em; // -2 %
+$letter-spacing-wide: 0.02em; // 2 %
+$letter-spacing-button: 0.04em; // 4 %
 
+// Espaciado (escala de 4px; los intermedios llevan guion)
+$space-1: 0.25rem; // 4
+$space-2: 0.5rem; // 8
+$space-2-5: 0.625rem; // 10
+$space-3: 0.75rem; // 12
+$space-3-5: 0.875rem; // 14
+$space-4: 1rem; // 16
+$space-4-5: 1.125rem; // 18
+$space-5: 1.25rem; // 20
+$space-6: 1.5rem; // 24
+$space-7: 1.75rem; // 28
+$space-8: 2rem; // 32
+$space-10: 2.5rem; // 40
+$space-social: 1.6875rem; // 27 (separación entre redes)
+$space-social-y: 0.9375rem; // 15
 
+// Radios
+$radius-xs: 0.25rem; // 4
+$radius-bar: 0.0625rem; // 1
+$radius-sm: 0.5rem; // 8
+$radius-md: 0.625rem; // 10
+$radius-logo: 0.6rem; // 9.6
+$radius-panel: 0.75rem; // 12
+$radius-lg: 1rem; // 16
+$radius-xl: 1.5rem; // 24
+$radius-pill: 999px;
+
+// Tamaños de piezas
+$size-dot: 0.375rem; // 6
+$size-icon: 1.5rem; // 24
+$size-icon-box: 3.5rem; // 56
+$size-logo-mark: 3rem; // 48
+$size-logo-icon: 2.4rem; // 38.4
+$size-social: 1.875rem; // 30
+$size-logo-height: 4.68rem; // 74.88
+$size-login-width: 5.375rem; // 86
+$size-login-height: 3.1875rem; // 51
+$size-hero-content: 15.4375rem; // 247
+$size-schedule-head: 3.5rem; // 56
+$size-schedule-day: 2rem; // 32
+$size-schedule-slot: 3rem; // 48
+
+// Menú hamburguesa
+$size-menu-toggle: 2.75rem; // 44
+$size-menu-option: 3rem; // 48
+$size-menu-bar-width: 1.25rem; // 20
+$size-menu-bar-height: 0.125rem; // 2
+$menu-bar-x: 0.75rem; // 12
+$menu-bar-y-top: 0.875rem; // 14
+$menu-bar-y-middle: 1.3125rem; // 21
+$menu-bar-y-bottom: 1.75rem; // 28
+$menu-bar-shift: 0.4375rem; // 7 (rayas → X)
+$menu-bar-cross-scale: 1.1; // la X mide 22px
+
+// Página de inicio de sesión
+$size-login-hero: 15.375rem; // 246
+$size-login-slogan: 3.875rem; // 62
+$size-login-title: 5.625rem; // 90
+$size-login-lead: 3.75rem; // 60
+$size-accent-width: 3.5rem; // 56
+$size-accent-height: 0.3125rem; // 5
+$size-field: 3.5rem; // 56
+$size-field-icon: 1.1875rem; // 19
+$size-checkbox: 1.25rem; // 20
+$size-check-icon: 0.8125rem; // 13
+$size-submit: 3.625rem; // 58
+$size-arrow: 1.3125rem; // 21
+$size-signup-width: 6.5625rem; // 105
+$size-signup-height: 2.625rem; // 42
+
+// Bordes y efectos
+$border: 1px solid $color-border;
+$border-divider: 1px solid $color-light;
+$border-accent: 1px solid $color-primary;
+$z-menu: 10;
+$icon-stroke: 2;
+$icon-stroke-check: 2.2;
+$icon-stroke-arrow: 2.29;
+$focus-outline: 2px solid $color-primary;
+$focus-offset: 3px;
+$transition: 0.2s ease;
+
+// Layout: ancho del diseño móvil (342px de contenido + 24px de margen a cada lado)
+$container-width: 24.375rem; // 390
+
+// Breakpoints (mobile first; preparados para la versión de escritorio)
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+);
