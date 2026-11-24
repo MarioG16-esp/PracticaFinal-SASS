@@ -22,8 +22,43 @@ $font-weight-regular: 25rem;
 $font-weight-media: 31.25rem;
 $font-weight-negrita: 43.75rem;
 
-/* Tipografia */
-$boton: Fugaz one;
-$letra-pequeña: Inter;
-$textos: Oswald;
-$titulos-y-apartados: Titan one;
+/* Tipografías */
+$font-title: "Titan One", sans-serif; // Títulos y apartados
+$font-text: "Oswald", sans-serif; // Textos
+$font-small: "Inter", sans-serif; // Letra pequeña
+$font-button: "Fugaz One", sans-serif; // Botón
+
+/*  Pesos */ 
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+
+$fs-h1: 28; // Título del hero (móvil)
+$fs-title-sm: 28; // Títulos de sección y tarjetas (Titulos pequeños)
+$fs-lead: 20; // Subtítulo de sección
+$fs-body: 16; // Texto general / LetraRecuadros
+$fs-small: 14; // Viñetas, botones de plan, copyright
+$fs-day: 20; // Días del horario
+$fs-slot: 16; // Etiqueta de clase del horario
+$fs-logo: 30.72; // Logo cabecera (móvil)
+$fs-logo-footer: 32;
+$fs-price: 40;
+$fs-nav: 16;
+$fs-login: 15;
+
+/* Espaciados  */ 
+$space-page-x: 24; // Margen lateral de la página en móvil
+$space-section-top: 40;
+$space-section-gap: 24;
+
+/* Radios */    
+$radius-card: 24;
+$radius-icon: 16;
+$radius-button: 10;
+$radius-pill: 999;
+$radius-slot: 8;
+
+/* Bordes */ 
+$border-muted: 1px solid $color-muted;
+
+
