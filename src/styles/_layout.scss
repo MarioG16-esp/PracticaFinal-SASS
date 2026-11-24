@@ -1,2 +1,216 @@
+
 @use "variables" as v;
-@use "mixing" as m;
+@use "mixins" as m;
+
+.container {
+  width: 100%;
+  max-width: v.$container-width;
+  margin-inline: auto;
+  padding-inline: v.$space-6;
+}
+
+// Cabecera: el fondo ocupa todo el ancho; el contenido va en .container
+.hero {
+  position: relative;
+  isolation: isolate; // las capas de fondo no salen de la cabecera
+  padding-block: v.$space-5 v.$space-10;
+  color: v.$color-light;
+  background: v.$color-dark;
+
+  // Capa 1 (Figma): imagen al 20 % de opacidad
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: url("../assets/hero-gym.jpg") center / cover no-repeat;
+    opacity: 0.2;
+  }
+
+  // Capa 2 (Figma): degradado al 20 % de opacidad
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(ellipse at center, v.$color-muted, v.$color-gradient-end);
+    opacity: 0.2;
+  }
+
+  &__inner {
+    @include m.stack(v.$space-5);
+  }
+
+  // Fila superior: logo + botón de acceso
+  &__bar {
+    @include m.flex-between;
+  }
+
+  // Bloque de texto, alineado al fondo de la cabecera
+  &__content {
+    @include m.stack(v.$space-4);
+    justify-content: flex-end;
+    min-height: v.$size-hero-content;
+  }
+
+  &__title {
+    @include m.type(v.$font-title, v.$font-size-title, v.$line-height-hero-title);
+  }
+
+  &__text {
+    @include m.type(v.$font-text, v.$font-size-base, v.$line-height-hero-text, v.$fw-bold);
+    color: v.$color-muted;
+  }
+}
+
+// Secciones (Info, Planes, Horarios). Se usan junto a .container
+.section {
+  @include m.stack(v.$space-6);
+  padding-top: v.$space-10;
+
+  // Horarios deja aire antes del footer
+  &--spaced-end {
+    padding-bottom: v.$space-10;
+  }
+
+  &__header {
+    @include m.stack(v.$space-4);
+  }
+
+  &__lead {
+    @include m.type(v.$font-text, v.$font-size-lead, v.$line-height-lead, v.$fw-bold);
+    color: v.$color-muted;
+  }
+
+  // Lista vertical de tarjetas (features / planes)
+  &__list {
+    @include m.stack(v.$space-5);
+  }
+}
+
+// Pie de página: el fondo ocupa todo el ancho; el contenido va en .container
+.footer {
+  padding-block: v.$space-10 v.$space-8;
+  color: v.$color-muted;
+  background: v.$color-dark;
+
+  &__top {
+    @include m.stack(v.$space-7);
+  }
+
+  &__brand {
+    @include m.stack(v.$space-4);
+  }
+
+  &__links {
+    display: flex;
+    gap: v.$space-6;
+  }
+
+  &__divider {
+    height: 0;
+    margin: 0;
+    border: 0;
+    border-top: v.$border-divider;
+  }
+
+  &__copy {
+    @include m.type(v.$font-small, v.$font-size-small);
+  }
+}
+
+// --------------------------------------------------------------------------
+// Página de inicio de sesión (login.html)
+// --------------------------------------------------------------------------
+
+// Fondo oscuro de toda la página
+.page--dark {
+  color: v.$color-light;
+  background: v.$color-page-dark;
+}
+
+// Cabecera con imagen y dos capas oscuras (Figma: degradado horizontal + vertical)
+.login-hero {
+  min-height: v.$size-login-hero;
+  padding-top: v.$space-6;
+  background:
+    linear-gradient(to bottom, v.$overlay-top, v.$overlay-bottom),
+    linear-gradient(
+      to right,
+      v.$overlay-side-start,
+      v.$overlay-side-mid v.$overlay-side-mid-stop,
+      v.$overlay-side-end
+    ),
+    url("../assets/login-hero.jpg") center / cover no-repeat;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__slogan {
+    @include m.type(v.$font-text, v.$font-size-title, v.$line-height-slogan, v.$fw-bold);
+    min-height: v.$size-login-slogan;
+    margin-top: v.$space-10;
+    letter-spacing: v.$letter-spacing-tight;
+  }
+
+  &__accent {
+    width: v.$size-accent-width;
+    height: v.$size-accent-height;
+    margin-top: v.$space-4-5;
+    background: v.$color-primary;
+    border-radius: v.$radius-pill;
+  }
+}
+
+// Zona del formulario
+.login {
+  @include m.stack(v.$space-10);
+  padding-block: v.$space-8 v.$space-7;
+
+  &__content {
+    @include m.stack(v.$space-8);
+  }
+
+  &__intro {
+    @include m.stack(v.$space-3);
+    text-align: center;
+  }
+
+  &__title {
+    @include m.type(v.$font-text, v.$font-size-display, v.$line-height-display, v.$fw-bold);
+    min-height: v.$size-login-title;
+    letter-spacing: v.$letter-spacing-wide;
+    color: v.$color-surface;
+  }
+
+  &__lead {
+    @include m.type(v.$font-text, v.$font-size-lead, v.$line-height-intro, v.$fw-bold);
+    min-height: v.$size-login-lead;
+    color: v.$color-secondary;
+  }
+
+  &__form {
+    @include m.stack(v.$space-8);
+  }
+
+  &__fields {
+    @include m.stack(v.$space-6);
+  }
+
+  &__options {
+    @include m.flex-between;
+  }
+
+  &__signup {
+    @include m.row(v.$space-3);
+    justify-content: center;
+  }
+
+  &__signup-text {
+    @include m.type(v.$font-small, v.$font-size-lead, normal, v.$fw-medium);
+    color: v.$color-muted;
+  }
+}
