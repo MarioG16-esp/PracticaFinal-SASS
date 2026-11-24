@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar sesión</title>
+  </head>
+    <body class="page--dark">
+    <!-- ============ CABECERA DE ACCESO ============ -->
+    <header class="login-hero">
+      <div class="login-hero__inner container">
+        <a class="logo" href="/index.html" aria-label="Titangym, volver al inicio">
+          <span class="logo__text">TITANGYM</span>
+          <svg class="logo__icon" aria-hidden="true"><use href="/icons.svg#icon-fitness" /></svg>
+        </a>
+        <p class="login-hero__slogan">La disciplina no descansa</p>
+        <span class="login-hero__accent" aria-hidden="true"></span>
+      </div>
+    </header>
+
+    <main class="login container">
+      <div class="login__content">
+        <div class="login__intro">
+          <h1 class="login__title">VUELVE AL EJERCICIO</h1>
+          <p class="login__lead">
+            Inicia sesión para gestionar tus entrenamientos, reservas y progreso.
+          </p>
+        </div>
+
+        <form class="login__form" action="#" method="post">
+          <div class="login__fields">
+            <div class="field">
+              <label class="field__label" for="email">Correo electrónico</label>
+              <div class="field__control">
+                <svg class="icon icon--stroke field__icon" aria-hidden="true">
+                  <use href="/icons.svg#icon-mail" />
+                </svg>
+                <input
+                  class="field__input"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="tu@correo.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="password">Contraseña</label>
+              <div class="field__control">
+                <svg class="icon icon--stroke field__icon" aria-hidden="true">
+                  <use href="/icons.svg#icon-lock" />
+                </svg>
+                <input
+                  class="field__input"
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="••••••••••"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  class="field__toggle"
+                  type="button"
+                  aria-label="Mostrar contraseña"
+                  aria-pressed="false"
+                  data-password-toggle="password"
+                >
+                  <svg class="icon icon--stroke field__icon" aria-hidden="true">
+                    <use href="/icons.svg#icon-eye-off" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="login__options">
+              <label class="checkbox">
+                <input class="checkbox__input" type="checkbox" name="remember" checked />
+                <span class="checkbox__box">
+                  <svg class="icon icon--stroke checkbox__check" aria-hidden="true">
+                    <use href="/icons.svg#icon-check" />
+                  </svg>
+                </span>
+                <span class="checkbox__text">Recordar sesión</span>
+              </label>
+              <a class="link" href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+          </div>
+
+          <button class="button button--submit" type="submit">
+            Iniciar sesión
+            <svg class="icon icon--stroke button__icon" aria-hidden="true">
+              <use href="/icons.svg#icon-arrow-right" />
+            </svg>
+          </button>
+        </form>
+
+        <p class="login__signup">
+          <span class="login__signup-text">¿Aún no tienes cuenta?</span>
+          <a class="button button--signup" href="#">Crear</a>
+        </p>
+      </div>
+
+      <footer class="legal">
+        <p>© 2026 TITANGYM-TOLEDO</p>
+        <p class="legal__links">
+          <a class="legal__link" href="#">Privacidad</a>
+          <span aria-hidden="true">·</span>
+          <a class="legal__link" href="#">Términos</a>
+        </p>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
