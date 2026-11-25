@@ -1,55 +1,61 @@
-# PracticaFinal-SASS · Titangym (versión móvil)
+# Titangym · Proyecto final de SASS
 
-Maquetación de la versión móvil (390px) del Figma "Trabajo MGO" con HTML + **Sass (SCSS)**, usando Vite.
-Dos pantallas: **inicio** (`index.html`) e **inicio de sesión** (`login.html`).
+## Autor
 
-## Arranque rápido
+Mario García Oliva
+
+## Práctica y asignatura
+
+- **Práctica:** Proyecto final de SASS (PracticaFinal-SASS)
+- **Asignatura:** Diseño de Interfaces Web (DIW)
+
+## Descripción
+
+Maquetación de la versión móvil (390px) de la web de un gimnasio, **Titangym**, a partir de un prototipo en Figma. Está hecha con HTML y **Sass (SCSS)**, y se compila con Vite.
+
+El proyecto tiene dos pantallas:
+
+- **Inicio (`index.html`):** cabecera con menú hamburguesa desplegable, sección de información, planes, horarios y pie de página.
+- **Inicio de sesión (`login.html`):** formulario con correo, contraseña (con botón para mostrarla u ocultarla), casilla "Recordar sesión" y botón para crear cuenta.
+
+El SCSS está organizado en parciales: `_variables`, `_mixins`, `_globals`, `_layout` y `_components`, que `main.scss` une con `@use`. Se usa la nomenclatura BEM y no hay colores ni medidas sueltas fuera de `_variables.scss`.
+
+## Instrucciones de ejecución
+
+Requisito: tener [Node.js](https://nodejs.org) instalado.
 
 ```bash
 npm install        # instala vite y sass
-npm run dev        # servidor de desarrollo con recarga automática
-npm run build      # genera la versión final en dist/ (las dos páginas)
-npm run preview    # sirve dist/ para probar la versión final
+npm run dev        # servidor de desarrollo (abre la dirección que muestra la terminal)
+npm run build      # genera la versión final
+npm run preview    # sirve la versión final para probarla
 ```
 
 ## Estructura
 
 ```
-├── index.html            ← página de inicio (cabecera con menú, info, planes, horarios, footer)
-├── login.html            ← pantalla de inicio de sesión
-├── vite.config.js        ← registra las dos páginas para el build
+├── index.html            Página de inicio
+├── login.html            Pantalla de inicio de sesión
+├── vite.config.js        Registra las dos páginas para el build
 ├── public/
-│   ├── icons.svg         ← sprite de iconos (<use href="/icons.svg#icon-...">)
-│   └── favicon.svg
+│   └── icons.svg         Sprite de iconos
 └── src/
-    ├── main.js           ← import de main.scss y de los scripts
-    ├── assets/           ← hero-gym.jpg, login-hero.jpg
+    ├── main.js           Importa los estilos y los scripts
+    ├── assets/           Imágenes de las cabeceras
     ├── scripts/
-    │   ├── menu.js       ← abre/cierra el menú hamburguesa (.menu--open)
-    │   └── password.js   ← botón del ojo: mostrar/ocultar contraseña
+    │   ├── menu.js       Menú hamburguesa
+    │   └── password.js   Mostrar / ocultar contraseña
     └── styles/
-        ├── _variables.scss  ← colores, fuentes, espaciados, radios, tamaños, breakpoints
-        ├── _mixins.scss     ← respond(), flex-center, stack, row, card, type
-        ├── _globals.scss    ← reset, estilos base y custom properties en :root
-        ├── _layout.scss     ← container, hero, section, footer, login-hero, login
-        ├── _components.scss ← logo, button, menu, cards, schedule, field, checkbox, legal...
-        └── main.scss        ← el único que se compila: los une con @use
+        ├── _variables.scss
+        ├── _mixins.scss
+        ├── _globals.scss
+        ├── _layout.scss
+        ├── _components.scss
+        └── main.scss
 ```
 
-## Convenciones
+## Enlaces
 
-- **BEM**: `bloque__elemento--modificador`. El botón es un bloque (`.button`) con variantes `--login`, `--plan`, `--submit` y `--signup`.
-- Ningún color ni medida suelta fuera de `_variables.scss`.
-- Estilos por clase, no por etiqueta; máximo 2 niveles de anidamiento.
-- Mobile first. `respond()` está preparado para la versión de escritorio.
-- Iconos: los de relleno (`.icon`) y los de trazo (`.icon.icon--stroke`) salen del sprite y toman el color de `currentColor`.
-
-## Tipografías (Google Fonts)
-
-| Uso | Fuente |
-| --- | --- |
-| Títulos | Titan One |
-| Textos | Oswald |
-| Letra pequeña | Inter |
-| Botón | Fugaz One |
-| Botón "Crear" | Saira Condensed |
+- **Repositorio en GitHub:** [PEGA AQUÍ EL ENLACE DEL REPOSITORIO](https://github.com/TU-USUARIO/NOMBRE-DEL-REPO)
+- **Página desplegada (GitHub Pages):** [PEGA AQUÍ EL ENLACE DE LA WEB](https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/)
+- **Prototipo en Figma:** [PEGA AQUÍ EL ENLACE DE FIGMA](https://www.figma.com/design/TU-ARCHIVO)
