@@ -6,7 +6,7 @@
 // Tipografías del Figma (Google Fonts)
 @import url("https://fonts.googleapis.com/css2?family=Fugaz+One&family=Inter:wght@400;500;700&family=Oswald:wght@400;600;700&family=Saira+Condensed:wght@700&family=Titan+One&display=swap");
 
-// Custom properties de CSS: se pueden cambiar en el navegador (temas, JS)
+//Propiedades cambiables de CSS: se pueden cambiar en el navegador (temas, JS)
 :root {
   --color-primary: #{v.$color-primary};
   --color-secondary: #{v.$color-secondary};
