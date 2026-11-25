@@ -82,7 +82,7 @@
     color: v.$color-muted;
   }
 
-  // Lista vertical de tarjetas (features / planes)
+  // Lista vertical de tarjetas (planes)
   &__list {
     @include m.stack(v.$space-5);
   }
@@ -129,7 +129,7 @@
   background: v.$color-page-dark;
 }
 
-// Cabecera con imagen y dos capas oscuras (Figma: degradado horizontal + vertical)
+// Cabecera con imagen y dos capas oscuras 
 .login-hero {
   min-height: v.$size-login-hero;
   padding-top: v.$space-6;
