@@ -1,2 +1,560 @@
+// Piezas reutilizables con nombres BEM: bloque__elemento--modificador
+
 @use "variables" as v;
-@use "mixing" as m;
+@use "mixins" as m;
+
+// Título de sección (Info, Planes, Horarios)
+.section-title {
+  @include m.type(v.$font-title, v.$font-size-title, v.$line-height-title);
+}
+
+// Logo de la cabecera
+.logo {
+  display: inline-flex;
+  align-items: center;
+  height: v.$size-logo-height;
+  padding-inline: v.$space-4 v.$space-2;
+  color: v.$color-text;
+  background: v.$color-secondary;
+  border-radius: v.$radius-logo;
+
+  &__text {
+    @include m.type(v.$font-title, v.$font-size-logo);
+    white-space: nowrap;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: v.$size-logo-icon;
+    height: v.$size-logo-icon;
+    fill: currentcolor;
+  }
+}
+
+// Botón base. Variantes: --login (cabecera) y --plan (tarjetas de planes)
+.button {
+  @include m.flex-center;
+  color: v.$color-text;
+  text-align: center;
+  cursor: pointer;
+  background: v.$color-primary;
+  border: 0;
+  transition: filter v.$transition;
+
+  &:hover {
+    filter: brightness(0.92);
+  }
+
+  &--login {
+    flex-shrink: 0;
+    width: v.$size-login-width;
+    height: v.$size-login-height;
+    padding-inline: v.$space-3;
+    @include m.type(v.$font-button, v.$font-size-login, v.$line-height-login);
+    text-transform: uppercase;
+    border-radius: v.$radius-md;
+  }
+
+  &--plan {
+    padding: v.$space-3-5 v.$space-4-5;
+    @include m.type(v.$font-small, v.$font-size-small, normal, v.$fw-bold);
+    border-radius: v.$radius-pill;
+  }
+
+  // Botón del formulario de login: texto a la izquierda, flecha a la derecha
+  &--submit {
+    justify-content: space-between;
+    width: 100%;
+    height: v.$size-submit;
+    padding-inline: v.$space-6;
+    @include m.type(v.$font-button, v.$font-size-login);
+    letter-spacing: v.$letter-spacing-button;
+    border-radius: v.$radius-md;
+  }
+
+  // Botón "Crear" (crear cuenta)
+  &--signup {
+    width: v.$size-signup-width;
+    height: v.$size-signup-height;
+    @include m.type(v.$font-signup, v.$font-size-lead, normal, v.$fw-bold);
+    text-transform: uppercase;
+    border-radius: v.$radius-pill;
+  }
+
+  &__icon {
+    width: v.$size-arrow;
+    height: v.$size-arrow;
+    stroke-width: v.$icon-stroke-arrow;
+  }
+}
+
+// Menú hamburguesa (se abre con scripts/menu.js, que añade .menu--open)
+.menu {
+  position: relative;
+
+  &__toggle {
+    display: block;
+    position: relative;
+    width: v.$size-menu-toggle;
+    height: v.$size-menu-toggle;
+    margin-left: auto;
+    padding: 0;
+    cursor: pointer;
+    background: v.$color-primary;
+    border: 0;
+    border-radius: v.$radius-md;
+    transition: filter v.$transition;
+
+    &:hover {
+      filter: brightness(0.92);
+    }
+  }
+
+  // Las tres rayas se convierten en una X al abrir
+  &__bar {
+    position: absolute;
+    left: v.$menu-bar-x;
+    width: v.$size-menu-bar-width;
+    height: v.$size-menu-bar-height;
+    background: v.$color-text;
+    border-radius: v.$radius-bar;
+    transition:
+      transform v.$transition,
+      opacity v.$transition;
+
+    &--top {
+      top: v.$menu-bar-y-top;
+    }
+
+    &--middle {
+      top: v.$menu-bar-y-middle;
+    }
+
+    &--bottom {
+      top: v.$menu-bar-y-bottom;
+    }
+  }
+
+  &--open &__bar--top {
+    transform: translateY(v.$menu-bar-shift) rotate(45deg) scaleX(v.$menu-bar-cross-scale);
+  }
+
+  &--open &__bar--middle {
+    opacity: 0;
+  }
+
+  &--open &__bar--bottom {
+    transform: translateY(-(v.$menu-bar-shift)) rotate(-45deg) scaleX(v.$menu-bar-cross-scale);
+  }
+
+  // Desplegable: flota sobre la cabecera para no mover el resto del contenido
+  &__panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: v.$z-menu;
+    margin-top: v.$space-2;
+    padding: v.$space-2;
+    background: v.$color-dark;
+    border: v.$border-accent;
+    border-radius: v.$radius-panel;
+  }
+
+  &--open &__panel {
+    display: block;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    min-height: v.$size-menu-option;
+    padding-inline: v.$space-4;
+    @include m.type(v.$font-text, v.$font-size-base, v.$line-height-base, v.$fw-bold);
+    color: v.$color-light;
+    text-transform: uppercase;
+    transition: color v.$transition;
+
+    &:hover {
+      color: v.$color-primary;
+    }
+  }
+}
+
+// Tarjeta de característica (sección Info)
+.feature-card {
+  @include m.card;
+  @include m.stack(v.$space-4);
+
+  &__icon {
+    @include m.flex-center;
+    width: v.$size-icon-box;
+    height: v.$size-icon-box;
+    background: v.$color-primary;
+    border-radius: v.$radius-lg;
+  }
+
+  // Iconos de trazo (Lucide)
+  &__svg {
+    width: v.$size-icon;
+    height: v.$size-icon;
+    fill: none;
+    stroke: v.$color-text;
+    stroke-width: v.$icon-stroke;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &__title {
+    @include m.type(v.$font-title, v.$font-size-title, v.$line-height-card-title);
+  }
+
+  &__text {
+    @include m.type(v.$font-small, v.$font-size-base, v.$line-height-base);
+    color: v.$color-muted;
+  }
+}
+
+// Tarjeta de plan (sección Planes)
+.plan-card {
+  @include m.card;
+  @include m.stack(v.$space-6);
+
+  &__top {
+    @include m.stack(v.$space-4);
+  }
+
+  &__title {
+    @include m.type(v.$font-title, v.$font-size-title, v.$line-height-card-title);
+  }
+
+  &__desc {
+    @include m.type(v.$font-small, v.$font-size-base, v.$line-height-base);
+    color: v.$color-muted;
+  }
+
+  &__price {
+    @include m.row(v.$space-1, baseline);
+  }
+
+  &__amount {
+    @include m.type(v.$font-small, v.$font-size-price, normal, v.$fw-bold);
+  }
+
+  &__period {
+    @include m.type(v.$font-small, v.$font-size-base);
+    color: v.$color-muted;
+  }
+
+  &__footer {
+    @include m.stack(v.$space-3);
+  }
+
+  &__list {
+    @include m.stack(v.$space-3);
+  }
+
+  &__item {
+    @include m.row(v.$space-2-5);
+    @include m.type(v.$font-small, v.$font-size-small);
+    color: v.$color-muted;
+
+    // Punto verde de la viñeta
+    &::before {
+      content: "";
+      flex-shrink: 0;
+      width: v.$size-dot;
+      height: v.$size-dot;
+      background: v.$color-primary;
+      border-radius: 50%;
+    }
+  }
+
+  // Posiciona el botón (.button) dentro de la tarjeta
+  &__action {
+    align-self: flex-start;
+  }
+}
+
+// Tabla de horarios
+.schedule {
+  @include m.card(v.$space-5);
+
+  &__head {
+    display: flex;
+    align-items: center;
+    min-height: v.$size-schedule-head;
+    padding-bottom: v.$space-4;
+    @include m.type(v.$font-title, v.$font-size-lead);
+    text-transform: uppercase;
+    border-bottom: v.$border;
+  }
+
+  // Fila de un día
+  &__day {
+    @include m.stack(v.$space-3);
+    padding-block: v.$space-5;
+    border-bottom: v.$border;
+  }
+
+  &__day-name {
+    display: flex;
+    align-items: center;
+    min-height: v.$size-schedule-day;
+    @include m.type(v.$font-title, v.$font-size-lead);
+    text-transform: uppercase;
+  }
+
+  &__slots {
+    @include m.stack(v.$space-3);
+  }
+
+  &__slot {
+    @include m.flex-between(v.$space-3);
+    min-height: v.$size-schedule-slot;
+  }
+
+  &__label {
+    @include m.type(v.$font-title, v.$font-size-base, v.$line-height-slot-label);
+    text-transform: uppercase;
+  }
+
+  &__time {
+    flex-shrink: 0;
+    padding: v.$space-3 v.$space-4;
+    @include m.type(v.$font-text, v.$font-size-base, v.$line-height-base, v.$fw-bold);
+    color: v.$color-light;
+    white-space: nowrap;
+    background: v.$color-accent;
+    border-radius: v.$radius-sm;
+  }
+}
+
+// Marca del footer
+.footer-logo {
+  @include m.row(v.$space-3);
+
+  &__mark {
+    @include m.flex-center;
+    width: v.$size-logo-mark;
+    height: v.$size-logo-mark;
+    color: v.$color-text;
+    background: v.$color-primary;
+    border-radius: v.$radius-lg;
+  }
+
+  &__svg {
+    width: v.$size-icon;
+    height: v.$size-icon;
+    fill: currentcolor;
+  }
+
+  &__text {
+    @include m.type(v.$font-title, v.$font-size-logo-footer);
+    color: v.$color-light;
+  }
+}
+
+.footer-text {
+  @include m.type(v.$font-small, v.$font-size-base, v.$line-height-base);
+}
+
+// Columna de enlaces del footer
+.footer-column {
+  @include m.stack(v.$space-3);
+
+  &__title {
+    @include m.type(v.$font-small, v.$font-size-small, normal, v.$fw-bold);
+    letter-spacing: v.$letter-spacing-label;
+    color: v.$color-primary;
+  }
+
+  &__link {
+    @include m.type(v.$font-small, v.$font-size-base);
+    transition: color v.$transition;
+
+    &:hover {
+      color: v.$color-light;
+    }
+  }
+}
+
+// Redes sociales
+.social {
+  @include m.row(v.$space-social);
+  padding-block: v.$space-social-y;
+
+  &__link {
+    display: block;
+    width: v.$size-social;
+    height: v.$size-social;
+    transition: color v.$transition;
+
+    &:hover {
+      color: v.$color-primary;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+    fill: currentcolor;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Icono del sprite (/icons.svg). --stroke para los iconos de trazo (Lucide)
+// --------------------------------------------------------------------------
+.icon {
+  flex-shrink: 0;
+  fill: currentcolor;
+
+  &--stroke {
+    fill: none;
+    stroke: currentcolor;
+    stroke-width: v.$icon-stroke;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Campo de formulario (etiqueta + caja con icono e input)
+// --------------------------------------------------------------------------
+.field {
+  @include m.stack(v.$space-2);
+
+  &__label {
+    @include m.type(v.$font-text, v.$font-size-label, normal, v.$fw-semibold);
+    color: v.$color-surface;
+  }
+
+  &__control {
+    @include m.row(v.$space-3);
+    height: v.$size-field;
+    padding-inline: v.$space-4;
+    background: v.$color-dark;
+    border: v.$border;
+    border-radius: v.$radius-md;
+    transition: border-color v.$transition;
+
+    &:focus-within {
+      border-color: v.$color-primary;
+    }
+  }
+
+  &__icon {
+    width: v.$size-field-icon;
+    height: v.$size-field-icon;
+    color: v.$color-muted;
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    @include m.type(v.$font-small, v.$font-size-login);
+    color: v.$color-surface;
+    background: transparent;
+    border: 0;
+    outline: 0;
+
+    &::placeholder {
+      color: v.$color-muted;
+    }
+  }
+
+  // Botón del ojo (mostrar / ocultar contraseña)
+  &__toggle {
+    display: flex;
+    padding: 0;
+    color: v.$color-muted;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    transition: color v.$transition;
+
+    &:hover {
+      color: v.$color-light;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Casilla personalizada ("Recordar sesión")
+// --------------------------------------------------------------------------
+.checkbox {
+  @include m.row(v.$space-2);
+  cursor: pointer;
+
+  // El input real queda oculto pero accesible por teclado
+  &__input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__box {
+    @include m.flex-center;
+    width: v.$size-checkbox;
+    height: v.$size-checkbox;
+    color: transparent;
+    border: v.$border;
+    border-radius: v.$radius-xs;
+    transition:
+      background-color v.$transition,
+      border-color v.$transition;
+  }
+
+  &__check {
+    width: v.$size-check-icon;
+    height: v.$size-check-icon;
+    stroke-width: v.$icon-stroke-check;
+  }
+
+  &__input:checked + &__box {
+    color: v.$color-text;
+    background: v.$color-secondary;
+    border-color: v.$color-secondary;
+  }
+
+  &__input:focus-visible + &__box {
+    outline: v.$focus-outline;
+    outline-offset: v.$focus-offset;
+  }
+
+  &__text {
+    @include m.type(v.$font-small, v.$font-size-label, normal, v.$fw-medium);
+    color: v.$color-muted;
+  }
+}
+
+// Enlace de texto en verde
+.link {
+  @include m.type(v.$font-small, v.$font-size-label, normal, v.$fw-bold);
+  color: v.$color-secondary;
+  transition: color v.$transition;
+
+  &:hover {
+    color: v.$color-primary;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Aviso legal (pie del login)
+// --------------------------------------------------------------------------
+.legal {
+  @include m.flex-between;
+  @include m.type(v.$font-small, v.$font-size-legal, normal, v.$fw-medium);
+  color: v.$color-muted;
+
+  &__links {
+    @include m.row(v.$space-2-5);
+    font-weight: v.$fw-bold;
+  }
+
+  &__link:hover {
+    color: v.$color-light;
+  }
+}
